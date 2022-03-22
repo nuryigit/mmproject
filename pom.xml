@@ -24,6 +24,7 @@
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <java.version>8</java.version>
     </properties>
 
     <build>
@@ -53,6 +54,27 @@
                         <goals>
                             <goal>clean</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-env-requirements</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>[8,)</version>
+                                </requireJavaVersion>
+                                <requireMavenVersion>
+                                    <version>[3.5,)</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
